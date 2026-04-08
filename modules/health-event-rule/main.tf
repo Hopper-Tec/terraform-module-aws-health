@@ -1,8 +1,14 @@
 resource "aws_cloudwatch_event_rule" "this" {
-  name          = var.name
-  description   = var.description
-  event_pattern = jsonencode({ for k, v in var.event_pattern : k => v if v != null })
-  state         = var.enabled ? "ENABLED" : "DISABLED"
+  name        = var.name
+  description = var.description
+  event_pattern = jsonencode(merge(
+    {
+      source      = ["aws.health"]
+      detail-type = ["AWS Health Event"]
+    },
+    length(var.detail_filter) > 0 ? { detail = var.detail_filter } : {}
+  ))
+  state = var.enabled ? "ENABLED" : "DISABLED"
 
   tags = var.tags
 }

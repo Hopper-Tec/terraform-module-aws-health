@@ -4,11 +4,6 @@ module "health_event_rule" {
   name        = "aws-health-alerts"
   description = "Captures AWS Health events and sends to SNS"
 
-  event_pattern = {
-    source      = ["aws.health"]
-    detail-type = ["AWS Health Event"]
-  }
-
   targets = [
     {
       arn       = aws_sns_topic.this.arn

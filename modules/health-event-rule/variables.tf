@@ -9,17 +9,10 @@ variable "description" {
   default     = "AWS Health event alert rule"
 }
 
-variable "event_pattern" {
-  description = "(Optional) The event pattern as a map. Defaults to AWS Health events."
-  type = object({
-    source      = list(string)
-    detail-type = list(string)
-    detail      = optional(map(list(string)))
-  })
-  default = {
-    source      = ["aws.health"]
-    detail-type = ["AWS Health Event"]
-  }
+variable "detail_filter" {
+  description = "(Optional) Additional detail filters for the event pattern (e.g., service, eventTypeCategory)."
+  type        = map(list(string))
+  default     = {}
 }
 
 variable "enabled" {
