@@ -6,7 +6,7 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.10.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.0.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.0, < 7.0 |
 
 ## Providers
 
@@ -31,7 +31,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_description"></a> [description](#input\_description) | (Optional) The description of the EventBridge rule. | `string` | `"AWS Health event alert rule"` | no |
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | (Optional) Whether the rule is enabled. | `bool` | `true` | no |
-| <a name="input_event_pattern"></a> [event\_pattern](#input\_event\_pattern) | (Required) The event pattern as a map. Defaults to AWS Health events. | `any` | <pre>{<br/>  "detail-type": [<br/>    "AWS Health Event"<br/>  ],<br/>  "source": [<br/>    "aws.health"<br/>  ]<br/>}</pre> | no |
+| <a name="input_event_pattern"></a> [event\_pattern](#input\_event\_pattern) | (Optional) The event pattern as a map. Defaults to AWS Health events. | <pre>object({<br/>    source      = list(string)<br/>    detail-type = list(string)<br/>    detail      = optional(map(list(string)))<br/>  })</pre> | <pre>{<br/>  "detail-type": [<br/>    "AWS Health Event"<br/>  ],<br/>  "source": [<br/>    "aws.health"<br/>  ]<br/>}</pre> | no |
 | <a name="input_name"></a> [name](#input\_name) | (Required) The name of the EventBridge rule. | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | (Optional) Key-value map of resource tags. | `map(string)` | `{}` | no |
 | <a name="input_targets"></a> [targets](#input\_targets) | (Required) List of targets for the rule. Each target must have an 'arn'. Optional: 'target\_id', 'input\_template', 'input\_paths'. | <pre>list(object({<br/>    arn            = string<br/>    target_id      = optional(string)<br/>    input_template = optional(string)<br/>    input_paths    = optional(map(string), {})<br/>  }))</pre> | n/a | yes |

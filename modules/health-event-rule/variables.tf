@@ -10,8 +10,12 @@ variable "description" {
 }
 
 variable "event_pattern" {
-  description = "(Required) The event pattern as a map. Defaults to AWS Health events."
-  type        = any
+  description = "(Optional) The event pattern as a map. Defaults to AWS Health events."
+  type = object({
+    source      = list(string)
+    detail-type = list(string)
+    detail      = optional(map(list(string)))
+  })
   default = {
     source      = ["aws.health"]
     detail-type = ["AWS Health Event"]
