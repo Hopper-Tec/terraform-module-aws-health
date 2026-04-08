@@ -1,7 +1,7 @@
 resource "aws_cloudwatch_event_rule" "this" {
   name          = var.name
   description   = var.description
-  event_pattern = jsonencode(var.event_pattern)
+  event_pattern = jsonencode({ for k, v in var.event_pattern : k => v if v != null })
   state         = var.enabled ? "ENABLED" : "DISABLED"
 
   tags = var.tags
