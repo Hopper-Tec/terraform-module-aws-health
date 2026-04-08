@@ -1,0 +1,27 @@
+{
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "[terraform]": {
+      "editor.defaultFormatter": "hashicorp.terraform",
+      "editor.formatOnPaste": true,
+      "editor.formatOnSave": true,
+      "editor.codeActionsOnSave": {
+        "source.formatAll.terraform": "explicit"
+      }
+    },
+    "[terraform-vars]": {
+      "editor.defaultFormatter": "hashicorp.terraform",
+      "editor.formatOnSave": true,
+      "editor.codeActionsOnSave": {
+        "source.formatAll.terraform": "explicit"
+      }
+    },
+    "terraform.codelens.referenceCount": true,
+    "terraform.experimentalFeatures.prefillRequiredFields": true,
+    "terraform.experimentalFeatures.validateOnSave": true,
+    "terraform.languageServer.enable": true,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "window.zoomLevel": 1
+  }

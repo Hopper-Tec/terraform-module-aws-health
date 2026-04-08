@@ -19,7 +19,7 @@ Reusable Terraform module for AWS Health event alerts via EventBridge rules and 
 
 - `.pre-commit-config.yaml` – Shared linting hooks
 - `modules/` – Terraform modules
-  - [Health Event Rule](./modules/health-event-rule/README.md)
+  - [Health Event Rule](https://github.com/Hopper-Tec/terraform-module-aws-health/tree/main/modules/health-event-rule)
 
 ---
 
