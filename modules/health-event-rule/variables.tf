@@ -29,10 +29,11 @@ variable "enabled" {
 }
 
 variable "targets" {
-  description = "(Required) List of targets for the rule. Each target must have an 'arn'. Optional: 'target_id', 'input_template', 'input_paths'."
+  description = "(Required) List of targets for the rule. Each target must have an 'arn'. Optional: 'target_id', 'role_arn' (required for cross-account targets), 'input_template', 'input_paths'."
   type = list(object({
     arn            = string
     target_id      = optional(string)
+    role_arn       = optional(string)
     input_template = optional(string)
     input_paths    = optional(map(string), {})
   }))

@@ -13,6 +13,7 @@ resource "aws_cloudwatch_event_target" "this" {
   rule      = aws_cloudwatch_event_rule.this.name
   target_id = coalesce(each.value.target_id, format("target-%s", each.key))
   arn       = each.value.arn
+  role_arn  = each.value.role_arn
 
   dynamic "input_transformer" {
     for_each = each.value.input_template != null ? [1] : []
